@@ -1,0 +1,179 @@
+#Bar plot
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+product_sales = df.groupby("Product")["Sales"].sum()
+
+plt.style.use("dark_background")
+
+product_sales.plot(kind="bar")
+
+plt.xlabel("Product")
+plt.ylabel("Total Sales")
+plt.title("Sales by Product")
+plt.xticks(rotation=45)
+plt.show()
+
+----------------------------------------------------------------------------------------------------------------
+
+#line Plot
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+df["Date"] = pd.to_datetime(df["Date"])
+
+plt.plot(df["Date"], df["Sales"], marker="o")
+
+plt.xlabel("Date")
+plt.ylabel("Sales")
+plt.title("Sales Over Time")
+plt.xticks(rotation=45)
+plt.show()
+
+--------------------------------------------------------------------------------------------------------------------------
+
+# Pivot Table
+
+import pandas as pd
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+pivot_table = pd.pivot_table(
+    df,
+    values="Sales",
+    index="Product",
+    aggfunc="sum"
+)
+
+print(pivot_table)
+--------------------------------------------------------------------------------------------------------------
+
+#Correlation matrix
+
+import pandas as pd
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+correlation_matrix = df[["Sales", "Quantity"]].corr()
+
+print("Correlation Matrix:")
+print(correlation_matrix)
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+# Heatmap
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+corr = df[["Sales", "Quantity"]].corr()
+
+plt.imshow(corr, cmap="coolwarm")
+
+plt.colorbar()
+
+plt.xticks(range(len(corr.columns)), corr.columns)
+plt.yticks(range(len(corr.columns)), corr.columns)
+
+for i in range(len(corr.columns)):
+    for j in range(len(corr.columns)):
+        plt.text(j, i, round(corr.iloc[i, j], 2),
+                 ha="center", va="center")
+
+plt.title("Correlation Heatmap")
+plt.show()
+
+--------------------------------------------------------------------------------------------------

@@ -1,0 +1,224 @@
+#Data frame
+
+import pandas as pd
+
+data = {
+    "Serial No.": [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008,
+ 1009, 1010 ],
+    "Date": ["2026/01/05", "2026/01/08","2026/01/12","2026/01/15",
+"2026/01/20","2026/01/25","2026/02/02","2026/02/07","2026/02/14",
+"2026/02/18"],
+    "Product Name": ["Laptop", "Smartphone", "Headphone","Keyboard",
+"Monitor","Tablet","Mouse","Printer","Laptop","Smartphone"],
+    "Sales":[75000,54000,12000,8500,45000,60000,6000,36000,
+100000,7200],
+    "Quantity":[3,6,10,5,5,4,10,4,4,8],
+    "place": ["Chennai", "Mumbai", "Delhi","Banglore",
+"Hyderabad","Pune","Kolkota","Ahmedabad","Jaipur","kochi"],
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+---------------------------------------------------------------------------------------
+
+#Row removal
+
+import pandas as pd
+
+data = {
+    "Serial No.": [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008,
+ 1009, 1010 ],
+
+    "Date": ["2026/01/05", "2026/01/08","2026/01/12","2026/01/15",
+"2026/01/20","2026/01/25","2026/02/02","2026/02/07","2026/02/14",
+"2026/02/18"],
+
+    "Product Name": ["Laptop", "Smartphone", "Headphone","Keyboard",
+"Monitor","Tablet","Mouse","Printer","Laptop","Smartphone"],
+
+    "Sales":[75000,54000,12000,8500,45000,60000,6000,36000,
+100000,7200],
+
+    "Quantity":[3,6,10,5,5,4,10,4,4,8],
+
+    "place": ["Chennai", "Mumbai", "Delhi","Banglore","Hyderabad",
+"Pune","Kolkota","Ahmedabad","Jaipur","kochi"],
+}
+
+df = pd.DataFrame(data)
+
+print(df.head())
+-----------------------------------------------------------------------------------------
+
+import pandas as pd
+
+# Create the dataset
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+df = df.drop(4)
+
+print(df)
+
+------------------------------------------------------------------------------------------------------
+
+# removing a value
+
+import pandas as pd
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+df.loc[0, "Sales"] = None
+
+print(df)
+
+-----------------------------------------------------------------------------------
+
+# Average method
+
+import pandas as pd
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+df.loc[0, "Sales"] = None
+
+average_sales = df["Sales"].mean()
+
+df["Sales"] = df["Sales"].fillna(average_sales)
+
+print(df)
+print("Average Sales:", average_sales)
+
+-----------------------------------------------------------------------------------
+# entire row removal
+
+
+
+
+
+
+-----------------------------------------------------------------------------------
+#Summary statistics
+
+import pandas as pd
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [75000, 48000, 12000, 7500, 5000, 36000, 50000, 72000, 15000, 9000],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+print(df.describe())
+
+print("Summary Statistics")
+print("-------------------")
+print("Average Sales:", df["Sales"].mean())
+print("Maximum Sales:", df["Sales"].max())
+print("Minimum Sales:", df["Sales"].min())
+print("Total Sales:", df["Sales"].sum())
+print("Average Quantity:", df["Quantity"].mean())
+print("Maximum Quantity:", df["Quantity"].max())
+print("Minimum Quantity:", df["Quantity"].min())
+print("Total Quantity:", df["Quantity"].sum())
+
+-----------------------------------------------------------------------------------
+
+# Group by product and calculate total values and quantity
+
+import pandas as pd
+
+data = {
+    "Date": [
+        "2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05",
+        "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10"
+    ],
+    "Product": [
+        "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse",
+        "Monitor", "Laptop", "Smartphone", "Headphones", "Keyboard"
+    ],
+    "Sales": [
+        75000, 48000, 12000, 7500, 5000,
+        36000, 50000, 72000, 15000, 9000
+    ],
+    "Quantity": [3, 4, 8, 10, 20, 6, 2, 6, 10, 12],
+    "Place": [
+        "Chennai", "Bangalore", "Coimbatore", "Chennai", "Madurai",
+        "Bangalore", "Hyderabad", "Chennai", "Salem", "Coimbatore"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+
+product_summary = df.groupby("Product")[["Sales", "Quantity"]].sum()
+
+
+print("\nTOTAL SALES AND QUANTITY BY PRODUCT")
+print("-----------------------------------")
+print(product_summary)
+
+-----------------------------------------------------------------------------------
